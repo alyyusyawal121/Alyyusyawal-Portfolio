@@ -99,11 +99,26 @@ export default function AboutDetail() {
               </p>
 
               <p>
-                My current focus is building websites using modern web technologies,
-                while also exploring graphic design and machine learning to broaden
-                my perspective.
+                My current focus is building modern, responsive websites using
+                contemporary web technologies. I enjoy turning ideas into
+                functional and user-friendly digital experiences.
+              </p>
+
+              <p>
+                Alongside web development, I am exploring graphic design and
+                machine learning to broaden my perspective, especially in how
+                data-driven and intelligent systems can enhance user experience
+                and decision-making.
+              </p>
+
+              <p>
+                Driven by continuous learning, I actively improve my skills through
+                hands-on projects, experimentation, and revisiting fundamentals.
+                I am always eager to grow, adapt, and take on new challenges in the
+                evolving technology landscape.
               </p>
             </div>
+
 
             {/* Right image */}
             <div className="relative w-[250px] h-[320px] md:w-[290px] md:h-[380px] lg:w-[310px] lg:h-[420px] mx-auto">
