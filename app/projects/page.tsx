@@ -3,14 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { db } from "@/lib/firebase/config";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard, { type Project } from "@/components/ProjectCard";
 import BackButton from "../../components/BackButton";
-
-type Project = {
-  id: string;
-  Filter?: string;
-  [key: string]: any;
-};
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -26,9 +20,13 @@ export default function ProjectsPage() {
         setLoading(true);
         const q = query(collection(db, "projects"), orderBy("order", "asc"));
         const snap = await getDocs(q);
-
-        const data = snap.docs.map((d) => ({ id: d.id, ...(d.data() as any) })) as Project[];
         if (!mounted) return;
+
+        // Cast data dari firestore ke tipe Project (kita pastikan fieldnya ada di firestore)
+        const data = snap.docs.map((d) => {
+          const raw = d.data() as Omit<Project, "id">;
+          return { id: d.id, ...raw } as Project;
+        });
 
         setProjects(data);
 
@@ -68,7 +66,7 @@ export default function ProjectsPage() {
 
   return (
     <section className="relative min-h-screen overflow-hidden text-white bg-gradient-to-b from-[#1A1E2E] to-[#0E1120]">
-      {/* ===== Background (match About/Contact) ===== */}
+      {/* ===== Background ===== */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0 opacity-[0.06]"
