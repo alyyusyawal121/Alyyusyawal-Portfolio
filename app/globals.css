@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+.navmenu-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+@layer utilities {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s ease-out forwards;
+  }
+
+  .fade-up-delay-1 {
+    animation-delay: .15s;
+  }
+  .fade-up-delay-2 {
+    animation-delay: .3s;
+  }
+  .fade-up-delay-3 {
+    animation-delay: .45s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,3 +57,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-40px) translateX(25px); }
+}
+
+@keyframes float-slow-2 {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(30px) translateX(-25px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
+}
+
